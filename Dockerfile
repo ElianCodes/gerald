@@ -20,6 +20,12 @@ RUN apt-get update \
         wget \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Yarn & NPM
+RUN apt-get update \
+    && apt-get install -y nodejs npm
+RUN npm install --global yarn
+
+
 # Install .NET SDK
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz \
     && dotnet_sha512='01ed59f236184987405673d24940d55ce29d830e7dbbc19556fdc03893039e6046712de6f901dc9911047a0dee4fd15319b7e94f8a31df6b981fa35bd93d9838' \
